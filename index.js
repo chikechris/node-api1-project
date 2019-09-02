@@ -27,6 +27,16 @@ app.post("/api/users", (req, res) => {
   }
 });
 
+app.get("/api/users", (req, res) => {
+  db.find()
+    .then(users => res.status(200).json(users))
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: "The users information could not be retrieved" });
+    });
+});
+
 app.listen(5500, () => {
   console.log(`The app is up and running on port 5500`)
 })
